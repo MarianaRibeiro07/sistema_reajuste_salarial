@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Meritocracia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>Sistema de Meritocracia e Reajuste Salarial</h2>
+
+    <div class="container">
+
+        
+        <div class="formulario">
+            <p>Selecione o seu cargo:</p>
+
+            <select id="cargo">
+                <option value="aprendiz">Aprendiz</option>
+                <option value="analista">Analista de TI</option>
+                <option value="gerente">Gerente de TI</option>
+                <option value="diretor">Diretor de TI</option>
+            </select>
+
+            <input type="number" id="salario" placeholder="Digite seu salário">
+            <input type="number" id="faltas" placeholder="Digite quantas faltas você tem">
+            <input type="number" id="atrasos" placeholder="Quantos atrasos você tem na empresa?">
+
+            <button onclick="verificar()">Verificar Reajuste</button>
+        </div>
+
+        <div class="historico">
+            <h3>Histórico</h3>
+            <div id="resultado"></div>
+        </div>
+
+    </div>
+
+    <script>
+function verificar(){
+
+    let cargo = document.getElementById("cargo").value;
+    let salario = Number(document.getElementById("salario").value);
+    let faltas = Number(document.getElementById("faltas").value);
+    let atrasos = Number(document.getElementById("atrasos").value);
+
+    let percentual = 0;
+    let resultado = document.getElementById("resultado");
+
+    if (faltas === 0 && atrasos === 0) {
+
+      
+        switch (cargo){
+            case "aprendiz":
+                percentual = 0;
+                break;
+            case "analista":
+                percentual = 0.10;
+                break;
+            case "gerente":
+                percentual = 0.15;
+                break;
+            case "diretor":
+                percentual = 0.20;
+                break;
+        }
+
+        let aumento = salario * percentual;
+        let novoSalario = salario + aumento;
+
+        resultado.innerHTML += `
+            <p>
+            Status:  APROVADO <br>
+            Salário Atual: R$ ${salario.toFixed(2)} <br>
+            Novo salário: R$ ${novoSalario.toFixed(2)}
+            </p>
+            <hr>
+        `;
+
+    } else {
+
+        resultado.innerHTML += `
+            <p style="color:red;">
+            Status: REAJUSTE BLOQUEADO <br>
+            Faltas: ${faltas} <br>
+            Atrasos: ${atrasos} <br>
+            Procure o RH para regularização.
+            </p>
+            <hr>
+        `;
+    }
+}
+</script>
