@@ -20,6 +20,7 @@ Praticar conceitos fundamentais de JavaScript, aplicando:
 ✅ Manipulação de dados via interface web
 
 🏢 Regras de Negócio
+
 1️⃣ Cálculo por Cargo
 
 O reajuste varia de acordo com o cargo:
@@ -29,6 +30,7 @@ Aprendiz	0%
 Analista de TI	10%
 Gerente de TI	15%
 Diretor de TI	20%
+
 2️⃣ Critério de Mérito (Regra de Ouro)
 
 O reajuste somente será concedido se o colaborador atender ao seguinte critério:
